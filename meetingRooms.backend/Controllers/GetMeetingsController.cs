@@ -17,13 +17,16 @@ namespace meetingRooms.backend.Controllers
             new MeetingRoom { Email = "small-meeting-room@sibedge.com", Name = "Малая переговорка"}
         };
 
+        private ExchangeService service;
+
+        public GetMeetingsController()
+        {
+            service = new Services.ExchageService().GetExchange();
+        }
+
         [Route("meetings/{id}")]
         public IEnumerable<Meeting> GetMeetings(int id)
         {
-            ExchangeService service = new ExchangeService(); //Auth
-            service.Credentials = new WebCredentials(PrivateVariables.Email, PrivateVariables.Passwrord);
-            service.Url = new Uri("https://outlook.office365.com/EWS/Exchange.asmx");
-
             FolderId folderIdFromCalendar;
             try
             {
