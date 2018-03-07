@@ -23,7 +23,11 @@ namespace meetingRooms.backend.Controllers
         {
             service = new Services.ExchageService().GetExchange();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [Route("meetings/{id}")]
         public IEnumerable<Meeting> GetMeetings(int id)
         {
